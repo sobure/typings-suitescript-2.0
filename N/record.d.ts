@@ -574,6 +574,10 @@ export interface ClientCurrentRecord {
      * This value is set when the record is created or accessed.
      */
     isDynamic: boolean;
+    /** UNDOCUMENTED (as of 2023.1): This value is true when the record is being created. */
+    readonly isNew: boolean;
+    /** UNDOCUMENTED (as of 2023.1): Returns true if the record form cannot be edited, or false otherwise. */
+    readonly isReadOnly: boolean;
     /**
      * Moves one line of the sublist to another location. The sublist machine must allow moving lines, for example: editmachine.setAllowMoveLines(true);.
      * The sublist must contain the _sequence field. The sublist type must be edit machine. When using this method, the order of the other lines is preserved.
@@ -616,7 +620,7 @@ export interface ClientCurrentRecord {
     /** Sets the value of a field. */
     setValue(options: SetValueOptions): this;
     setValue(fieldId: string, value: FieldValue): this;
-    
+
     /** The record type. */
     type: Type | string;
 }
